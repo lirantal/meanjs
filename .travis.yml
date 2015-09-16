@@ -6,8 +6,7 @@ node_js:
   - 4
 # node_js 4 requires gcc 4.8 
 env:
-  - NODE_ENV=travis
-  - CXX="g++-4.8"
+  - NODE_ENV=travis CXX="g++-4.8"
 matrix:
   allow_failures:
     - node_js: 4
