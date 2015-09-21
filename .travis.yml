@@ -4,13 +4,22 @@ node_js:
   - 0.10
   - 0.12
   - 4
+# node_js 4 requires gcc 4.8 
 env:
-  - NODE_ENV=travis
+  - NODE_ENV=travis CXX="g++-4.8"
 matrix:
   allow_failures:
     - node_js: 4
 services:
   - mongodb
+# gcc 4.8 requires ubuntu-toolchain-r-test
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+    - gcc-4.8
 before_install:
   - gem update --system
   - gem install sass --version "=3.3.7"
