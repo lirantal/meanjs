@@ -36,25 +36,17 @@ WORKDIR /opt/mean.js
 ADD package.json /opt/mean.js/package.json
 ADD bower.json /opt/mean.js/bower.json
 ADD .bowerrc /opt/mean.js/.bowerrc
-# Make sure everything is owned by the node user and group
-RUN chown -R node:node /opt/mean.js
 
 # Install MEAN.JS packages
-USER node
 RUN npm install --quiet
-RUN bower install --quiet --config.interactive=false
+RUN bower install --quiet --allow-root --config.interactive=false
 
+# Make sure everything is owned by the node user and group
+RUN chown -R node:node /opt/mean.js
 # Share local directory on the docker container
 ADD . /opt/mean.js
 
-# Make sure everything is owned by the node user and group
-#RUN chown -R node:node /opt/mean.js
-
-# Install MEAN.JS packages
-#RUN npm install
-
 # Machine cleanup
-USER root
 RUN npm cache clean
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
