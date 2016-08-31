@@ -4,6 +4,8 @@
   "version": "0.5.0-beta",
   "meanjs-version": "0.5.0-beta",
   "private": false,
+  "homepage": "https://github.com/meanjs/mean",
+  "bugs": "https://github.com/meanjs/mean/issues",
   "author": "https://github.com/meanjs/mean/graphs/contributors",
   "license": "MIT",
   "repository": {
@@ -12,7 +14,7 @@
   },
   "engines": {
     "node": ">=0.12.0",
-    "npm": ">=2.0.0"
+    "npm": ">=3.0.0"
   },
   "scripts": {
     "update": "npm update && npm prune && bower install --allow-root && bower prune --allow-root",
